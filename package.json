@@ -1,0 +1,7 @@
+{
+  "name": "spelling-suggester",
+  "version": "0.0.1",
+  "dependencies": {
+    "csv": ">=0.3.7"
+  }
+}
