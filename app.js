@@ -14,8 +14,6 @@ function parseCsvs(callback) {
     });
 }
 
-parseCsvs(writeSuggestions);
-
 function calculateLevDistance(word1, word2) {
     //Holds the distance between the first i characters of word1 and the first j characters of word2.
     var distances = [];
@@ -24,7 +22,7 @@ function calculateLevDistance(word1, word2) {
     var i;
     var j;
     var cost;
-    while(distances.push([]) <= word1Length);
+    while (distances.push([]) <= word1Length);
     for (i = 0; i <= word1Length; i++) {
         distances[i][0] = i;
     }
@@ -45,7 +43,7 @@ function calculateLevDistance(word1, word2) {
             var substitution = distances[i - 1][j - 1] + cost;
             distances[i][j] = Math.min(deletion, insertion, substitution);
 
-            if (i > 1 && j > 1 && word1.charAt(i) == word2.charAt(j - 1) && word1.charAt(i - 1) == word2.charAt(j)) {
+            if (i > 1 && j > 1 && word1.charAt(i - 1) == word2.charAt(j - 2) && word1.charAt(i - 2) == word2.charAt(j -1)) {
                 distances[i][j] = Math.min(distances[i][j], distances[i - 2][j - 2] + cost);
             }
         }
@@ -53,8 +51,11 @@ function calculateLevDistance(word1, word2) {
     return distances[word1Length][word2Length];
 }
 
-function writeSuggestions(dictionary, misspelled)
-{
+/* This function takes a dictionary array of correctly spelled words, previously sorted by their frequency of use,
+ * and an array of misspelled words to determine suggestions for. It then takes each misspelled word and calculates the
+ * Damerau-Levenshtein distance between it and the dictionary words to determine matches.
+ * */
+function writeSuggestions(dictionary, misspelled) {
     var stream = fs.createWriteStream("suggestions.txt");
 
     var numWords = 0;
@@ -64,8 +65,7 @@ function writeSuggestions(dictionary, misspelled)
         var writeExtraBracket = true;
         for (var j = 0; j < dictionary.length; j++) {
             var correctWord = dictionary[j][0];
-            if(calculateLevDistance(misspelledWord, correctWord) <= 2)
-            {
+            if (calculateLevDistance(misspelledWord, correctWord) <= 2) {
                 writeString += "'" + correctWord + "'" + ",";
                 numWords++;
                 writeExtraBracket = false;
@@ -80,3 +80,9 @@ function writeSuggestions(dictionary, misspelled)
     stream.end();
     console.log(numWords);
 }
+
+exports.calculateLevDistance = calculateLevDistance;
+
+//Running the program
+parseCsvs(writeSuggestions);
+
