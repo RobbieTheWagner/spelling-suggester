@@ -53,6 +53,9 @@ which simplifies again to being just O(nm).
 </pre>
   3. How does the code perform on long queries versus short queries and why?
 <pre>
-Once again, with the algorithm being O(nm), the code will execute linearly proportional to the number of letters in each
-of the words being looked at. Short queries will take less time, and long queries will take more time, but the difference should be minimal. For example, if you compare just "a" and "b" it would be done immediately and return 1, but if you compare longer words, it will take time proportional to the size of the words. It is negligible though since it is linear.
+Once again, with the algorithm being O(nm), the code will execute linearly proportional to the number of 
+letters in eachof the words being looked at. Short queries will take less time, and long queries will take more 
+time, but the difference should be minimal. For example, if you compare just "a" and "b" it would be done immediately 
+and return 1, but if you compare longer words, it will take time proportional to the size of the words. 
+It is negligible though since it is linear.
 </pre>
