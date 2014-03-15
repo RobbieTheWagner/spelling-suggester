@@ -1,8 +1,12 @@
+//Requires
 var chai = require('chai');
 var assert = chai.assert;
-var calculateLevDistance = require('../spelling-suggester.js').calculateLevDistance;
-var writeSuggestions = require('../spelling-suggester.js').writeSuggestions;
+var spellingSuggester = require('../spelling-suggester.js');
+var calculateLevDistance = spellingSuggester.calculateLevDistance;
+var writeSuggestions = spellingSuggester.writeSuggestions;
+var min = spellingSuggester.min;
 
+//Test suites
 suite('spelling-suggester', function() {
     /*Testing calculateLevDistance*/
     test('calculateLevDistance should return Damerau-Levenshtein distance', function() {
@@ -17,6 +21,11 @@ suite('spelling-suggester', function() {
         var misspelled = [['loev'], ['baeutifl'], ['llohe'], ['test']];
         var expectedOutput = "* loev: ['love']\r\n* baeutifl: ['beautiful']\r\n* llohe: ['love']\r\n* test: []\r\n";
         var actualOutput = writeSuggestions(dictionary, misspelled);
-        assert.equal(actualOutput, expectedOutput);
+        assert.equal(expectedOutput, actualOutput);
+    });
+
+    /*Testing min*/
+    test('min should return the minimum of the two numbers given', function() {
+        assert.equal(2, min(5,2));
     });
 });
