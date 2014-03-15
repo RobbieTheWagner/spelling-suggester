@@ -44,6 +44,14 @@ function calculateLevDistance(word1, word2) {
     var word1Length = word1.length;
     var word2Length = word2.length;
     var cost;
+    if(word1Length == 0)
+    {
+        return word2Length;
+    }
+    else if(word2Length == 0)
+    {
+        return word1Length;
+    }
     //Initialize array
     while (distances.push([]) <= word1Length);
     //Populate array
