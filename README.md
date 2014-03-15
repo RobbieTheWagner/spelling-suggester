@@ -7,6 +7,8 @@ It uses the npm module csv to parse two CSV files, a list of misspelled words, a
 
 After parsing the two files, and loading them into arrays, it iterates through each array, and calculates the Damerau-Levenshtein distance between the correct words in the dictionary and the misspelled words to determine which words match to be used as spelling correction suggestions.
 
+To write my Damerau-Levenshtein function, I referenced the explanation and pseudocode on the [Wikipedia](http://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) page. Once I implemented the basic algorithm, I reversed a couple of my for loops and changed a call to ```Math.min`` to my own written min function instead. This brought the execution time down a considerable amount.
+
 I used Mocha for testing and Chai to do assertions. The tests are located in the test folder.
 
 To run the app, you must have node and npm installed on your machine. If you do not, please go [here](http://nodejs.org/download/) and download node for your machine.
