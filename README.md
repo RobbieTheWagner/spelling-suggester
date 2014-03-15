@@ -23,7 +23,7 @@ Then, all you have to do is run:
 node app.js
 ```
 
-You will not see any output in the terminal, but the program is running. When it completes, in ~45 seconds, it will have generated a suggestions.txt file in the root of the project. You can then view that to see the suggestions for each misspelled word.
+You will not see any output in the terminal, but the program is running. When it completes, in ~45 seconds, it will print to the console the number of words found and the time it took to execute. Also, it will have generated a suggestions.txt file in the root of the project. You can then view that to see the suggestions for each misspelled word.
 
 To run the tests for the app, while still in the root of the project, simply run:
 ```
