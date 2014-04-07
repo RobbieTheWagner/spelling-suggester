@@ -35,7 +35,7 @@ npm test
 
 This will run the tests using Mocha, and output the results.
 
-## Questions
+<!---## Questions
   1. How would the code perform if the size of the dictionary were 1 million words?
 <pre>
 If the size of the dictionary were 1 million words, the code would be slower, but it would only 
@@ -61,3 +61,4 @@ and long queries will take more time, but the difference should be minimal. For 
 you compare just "a" and "b" it would be done immediately and return 1, but if you compare longer 
 words, it will take time proportional to the size of the words. It is negligible though since it is linear.
 </pre>
+-->
